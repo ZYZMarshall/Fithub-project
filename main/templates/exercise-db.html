@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block content %}
+    {%  if current_user.is_authenticated %}
+
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Fit-hub Exercise Database</h4>
+          </div>
+          <ul>
+            <li><p>Some Description.</p></li>
+            <li><p>Click on one of the cards to view all exercises associated with that muscle group.</p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/legs-db.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a href="{{ url_for('exercise_db_legs1') }}"><h4>Legs and Lower Body</h4></a>
+          </div>
+          <ul>
+            <li><p>A collection of lower body exercises, ... description.</p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+          </ul>
+        </div>
+      </article>
+
+    {% else %}
+
+    <h2>Workout </h2>
+
+    {% endif %}
+
+{% endblock content %}
+
+{% block content1 %}
+
+    <div class="col-md-4">
+        <div class="content-section1">
+         {%  if current_user.is_authenticated %}
+         <h3>{{ current_user.first_name }}'s Workouts.</h3>
+         <p class='text-muted'>Description.
+            <ul class="list-group">
+              <a href="{{ url_for('workouts') }}" class="button3"><span>Today's Workout</span></a>
+              <a href="{{ url_for('add_exercise1', today = today) }}" class="button3">
+                <span>Add an Exercise</span></a>
+              <a href="" class="button3">
+                <span>Resources</span></a>
+              <a href="" class="button3">
+                <span>Exercise Database</span></a>
+         {% else %}
+          <h3>Your Nutrition, Simplified.</h3>
+          <p class='text-muted'>Easily log and track your nutritional data so you can maximize your workouts and ....
+            <ul class="list-group">
+              <a href="{{ url_for('set_macros') }}" class="button3">
+                <span>Set Macros</span></a>
+              <a href="{{ url_for('new_meal1') }}" class="button3">
+                <span>Add a Meal</span></a>
+              <a href="{{ url_for('meal_log') }}" class="button3">
+                <span>Meal Log</span></a>
+              <a href="{{ url_for('nutrition_resources') }}" class="button3">
+                <span>Resources</span></a>
+          {% endif %}
+            </ul>
+         </p>
+        </div>
+    </div>
+
+{% endblock content1 %}

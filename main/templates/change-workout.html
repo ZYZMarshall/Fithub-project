@@ -1,0 +1,46 @@
+{% extends "layout2.html" %}
+{% block content %}
+    <div class = "content-section">
+        <form method = "POST" action = "">
+            {{ form.hidden_tag() }}
+            <fieldset class = "form-group">
+                <legend class = "border-bottom mb-4">Change or Set One of Your Workouts.</legend>
+                <div class="form-group">
+                    {{ form.workout.label(class="form-control-label") }}
+                    {% if form.workout.errors %}
+                        {{ form.workout(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.workout.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.workout(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.day.label(class="form-control-label") }}
+                    {% if form.day.errors %}
+                        {{ form.day(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.day.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.day(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.reset(class="form-check-input")}}
+                    {{ form.reset.label(class="form-check-label")}}
+                </div>
+            </fieldset>
+            <div class = "form-group">
+                {{ form.submit(class = "btn btn-outline-info")}}
+            </div>
+        </form>
+    </div>
+
+
+{% endblock content %}

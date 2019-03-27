@@ -1,0 +1,97 @@
+{% extends "layout2.html" %}
+{% block content %}
+    <div class = "content-section">
+        <form method = "POST" action = "">
+            {{ form.hidden_tag() }}
+            <fieldset class = "form-group">
+                <legend class = "border-bottom mb-4">Add a Meal to Your Nutrition Log.</legend>
+                <div class="form-group">
+                    {{ form.description.label(class="form-control-label") }}
+                    {% if form.description.errors %}
+                        {{ form.description(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.description.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.description(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.food_type.label(class="form-control-label") }}
+                    {% if form.food_type.errors %}
+                        {{ form.food_type(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.food_type.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.food_type(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.time.label(class="form-control-label") }}
+                    {% if form.time.errors %}
+                        {{ form.time(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.time.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.time(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.protein.label(class="form-control-label") }}
+                    {% if form.protein.errors %}
+                        {{ form.protein(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.protein.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.protein(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.carbs.label(class="form-control-label") }}
+                    {% if form.carbs.errors %}
+                        {{ form.carbs(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.carbs.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.carbs(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.fat.label(class="form-control-label") }}
+                    {% if form.fat.errors %}
+                        {{ form.fat(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.fat.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.fat(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class = "form-group">
+                {{ form.submit(class = "btn btn-outline-info")}}
+            </div>
+                <small class = "text-muted">
+                Unsure about your meal's macro content? Try <a href = "https://www.myfitnesspal.com/food/calorie-chart-nutrition-facts" target="_blank">MyFitnessPal</a>, or our <a href = "url_for('nutrition_resouces')">Resources</a> page.
+                </small>
+        </form>
+    </div>
+
+
+{% endblock content %}

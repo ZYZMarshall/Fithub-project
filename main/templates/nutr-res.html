@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block content %}
+    {%  if current_user.is_authenticated %}
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Understanding Your Nutrition</h4>
+          </div>
+          <p>It's often said that fitness comes down to 30% working out, and 70% diet. FILLER.</p>
+          <p>Click on one of the cards to learn more about each topic.</p>
+        </div>
+      </article>
+
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/macrochart.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a href=""><h4>Macros 101 - Understanding the Building Blocks</h4></a>
+          </div>
+          <p>What are macronutrients, or "macros"? How does it make up everything I eat? How do I know how much of it I should eat? How should I adjust my macros to fit different eating and dieting techniques? FILLER.</p>
+          <p>Learn everything you need to know about the very fundamentals of nutrition here.</p>
+        </div>
+      </article>
+
+
+
+    {% else %}
+
+
+{% endif %}
+
+{% endblock content %}
+
+{% block content1 %}
+
+    <div class="col-md-4">
+        <div class="content-section1">
+         {%  if current_user.is_authenticated %}
+         <h3>Resources for {{ current_user.first_name }}.</h3>
+         <p class='text-muted'>Check out these articles and websites tailored to help you understand your nutrition better.
+            <ul class="list-group">
+              <a href="{{ url_for('set_macros') }}" class="button3">
+              	<span>Set Your Macros</span></a>
+              <a href="{{ url_for('view_macros') }}" class="button3">
+                <span>View Your Macros</span></a>
+              <a href="{{ url_for('nutrition') }}" class="button3">
+                <span>View Your Nutrition</span></a>
+              <a href="{{ url_for('meal_log') }}" class="button3">
+                <span>View Your Meal Log</span></a>
+         {% else %}
+          <h3>Your Nutrition, Simplified.</h3>
+          <p class='text-muted'>Easily log and track your nutritional data so you can maximize your workouts and ....
+            <ul class="list-group">
+              <a href="{{ url_for('set_macros') }}" class="button3">
+                <span>Set Macros</span></a>
+              <a href="{{ url_for('new_meal1') }}" class="button3">
+                <span>Add a Meal</span></a>
+              <a href="{{ url_for('meal_log') }}" class="button3">
+                <span>Meal Log</span></a>
+              <a href="{{ url_for('nutrition_resources') }}" class="button3">
+                <span>Resources</span></a>
+          {% endif %}
+            </ul>
+         </p>
+        </div>
+    </div>
+
+{% endblock content1 %}

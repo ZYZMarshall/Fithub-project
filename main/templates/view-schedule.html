@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block content %}
+    {%  if current_user.is_authenticated %}
+
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>{{ current_user.first_name }}'s Weekly Workout Schedule</h4>
+          </div>
+          <ul>
+            <li><p>Click one of the cards to view your workout schedule for that day.</p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+          </ul>
+        </div>
+      </article>
+
+    {% for i in range(7) %}
+
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4><a href="{{ url_for('workouts_day', day = schedules[i].day_of_week) }}" style="color:black;">
+            {{ schedules[i].day_of_week }}: {{ schedules[i].workout }}</a></h4>
+          </div>
+          <ul>
+            {% if schedules[i].workout == 'None Set.' %}
+            <li><p>Please set a workout for this day to see more details.</p></li> 
+            {% else %}
+            <li><p><strong>Number of Exercises: </strong>{{ num_exercises[i] }}</p></li>
+            <li><p></p></li> 
+            <li><p></p></li>
+            <li><p></p></li>
+            {% endif %}
+          </ul>
+          <small class="text-muted"><a href="">link</a></small>
+        </div>
+      </article>
+
+    {% endfor %}
+
+
+
+    {% else %}
+
+    <h2>Workout </h2>
+
+    {% endif %}
+
+{% endblock content %}
+
+{% block content1 %}
+
+    <div class="col-md-4">
+        <div class="content-section1">
+         {%  if current_user.is_authenticated %}
+         <h3>{{ current_user.first_name }}'s Workouts.</h3>
+         <p class='text-muted'>Description.
+            <ul class="list-group">
+              <a href="{{ url_for('workouts') }}" class="button3"><span>Today's Workout</span></a>
+              <a href="{{ url_for('add_exercise1', today = today) }}" class="button3">
+                <span>Add an Exercise</span></a>
+              <a href="" class="button3">
+                <span>Resources</span></a>
+              <a href="{{ url_for('exercise_db') }}" class="button3">
+              	<span>Exercise Database</span></a>
+         {% else %}
+          <h3>Your Nutrition, Simplified.</h3>
+          <p class='text-muted'>Easily log and track your nutritional data so you can maximize your workouts and ....
+            <ul class="list-group">
+              <a href="{{ url_for('set_macros') }}" class="button3">
+                <span>Set Macros</span></a>
+              <a href="{{ url_for('new_meal1') }}" class="button3">
+                <span>Add a Meal</span></a>
+              <a href="{{ url_for('meal_log') }}" class="button3">
+                <span>Meal Log</span></a>
+              <a href="{{ url_for('nutrition_resources') }}" class="button3">
+                <span>Resources</span></a>
+          {% endif %}
+            </ul>
+         </p>
+        </div>
+    </div>
+
+{% endblock content1 %}

@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+{%  if current_user.is_authenticated %}
+    <h1>{{ current_user.first_name }}'s Community</h1>
+{% else %}
+	<h1>Community</h1>
+{% endif %}
+
+{% endblock content %}

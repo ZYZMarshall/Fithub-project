@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    <div class="content-section">
+      <div class="media">
+      <a href="{{ url_for('change_profile_image') }}">
+      	<img class="rounded-circle account-img" src="{{ image_file }}">
+      </a>
+      	<div class="media-body">
+      		<h4 class="account-heading">{{ current_user.first_name }} {{ current_user.last_name }}</h4>
+      		<p class="text-secondary">Username: {{ current_user.username }}</p>
+      		<p class="text-secondary">Email: {{ current_user.email }}</p>
+      		<p class="text-secondary">{{ current_user.profile[0].quote }}</p>
+      		<p class="text-secondary">Joined {{ current_user.date_joined }}.</p>
+      	</div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+{% block content1 %}
+
+    <div class="col-md-4">
+        <div class="content-section1">
+         <h3>{{ current_user.first_name }}'s Profile.</h3>
+         <p class='text-muted'>Manage your account details here.
+            <ul class="list-group">
+              <a href="{{ url_for('change_user') }}" class="button5">
+                <span>Change Your Username and Email</span></a>
+              <a href="#" class="button5">
+                <span>Change Account Details</span></a>
+              <a href="{{ url_for('change_password') }}" class="button5">
+                <span>Change Your Password</span></a>
+
+   
+            </ul>
+         </p>
+        </div>
+    </div>
+
+{% endblock content1 %}
