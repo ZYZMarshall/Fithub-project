@@ -5,10 +5,12 @@ Dependencies:
 
 Flask;
 
-SQLAlchemy;
+Database:SQLAlchemy;
 
 Pillow;
 
 WTForms;
+
+Boostrap;
 
 URL:fithubforeveryone.com/bg_fithubforeveryone.com/
