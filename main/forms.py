@@ -1,7 +1,6 @@
 ########################################################################################
 # WTForms for user registration, login, profile creation, and user data entries/edits. #
-#                                                                                      #
-# Written by Lewis Kim.                                                                #
+#                                                                                      #                                                              #
 ########################################################################################
 
 from datetime import datetime

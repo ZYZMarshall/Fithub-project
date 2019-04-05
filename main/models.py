@@ -1,9 +1,8 @@
 ######################################################################################################
-# Database models for PlateMath users using SQLAlchemy.                                              #
+# Database models for Fithub users using SQLAlchemy.                                              #
 # Models for user data, user fitness profile data, user workout schedule data, user exercises data,  #
 # and user nutritional data (macros and meals).                                                      #
-#                                                                                                    #
-# Written by Lewis Kim.                                                                              #
+#                                                                                                    #                                                                             #
 ######################################################################################################
 
 from datetime import datetime

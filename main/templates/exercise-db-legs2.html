@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block content %}
+    {%  if current_user.is_authenticated %}
+
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Leg and Lower Body Exercises</h4>
+          </div>
+          <ul>
+            <li><p>Description.</p></li>
+            <li><p>If you're curious about any description term or , visit our <a href="">Resources</a> page.</p></li>
+            <li><p></p></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/deadlift.png') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Barbell Deadlift</h4>
+          </div>
+          <ul>
+            <li><p>Descriptions:Deadlifting in itself is not dangerous – but like with any movement, deadlifting incorrectly can be. Properly executing the deadlift will allow you to build a stronger posterior chain, less fragile joints, and a body that can handle whatever life throws at you.</p></li>
+            <li><p><strong>Exercise Type: </strong>Compound</p></li>
+            <li><p><strong>Difficulty: </strong>Intermediate - Expert</p></li>
+            <li><p><strong>Exercise Video: </strong><a href="https://www.youtube.com/watch?v=hCDzSR6bW10" target="_blank">
+            YouTube Link</a></p></li>
+            <li><a href="{{ url_for('add_exercise3', exercise_name = 'Deadlift', difficulty = 'Intermediate') }}">
+              <p>Add this Exercise to One of My Workouts</p></a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/Goblet squat.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Goblet squat</h4>
+          </div>
+          <ul>
+            <li><p>Description:Perform a goblet squat: When holding a dumbbell, one end touches the chest and one end touches the abdomen. When you are kneeling, you find that the lower end of the dumbbell is no longer in contact with the abdomen, which means the upper body is too forward.</p></li>
+            <li><p><strong>Exercise Type: </strong>Compound</p></li>
+            <li><p><strong>Difficulty: </strong></p></li>
+            <li><p><strong>Exercise Video: </strong><a href="https://www.youtube.com/watch?v=zcJeHchdp9o" target="_blank">
+            YouTube Link</a></p></li>
+            <li><a href="{{ url_for('add_exercise3', exercise_name = 'Leg Press', difficulty = 'Beginner') }}">
+              <p>Add this Exercise to One of My Workouts</p></a></li>
+          </ul>
+        </div>
+      </article>
+
+
+      <a class="btn btn-outline-info mb-4" href="{{ url_for('exercise_db_legs1') }}">1</a>
+      <a class="btn btn-outline-info mb-4" href="{{ url_for('exercise_db_legs2') }}">2</a>
+
+    {% else %}
+
+    <h2>Workout </h2>
+
+    {% endif %}
+
+{% endblock content %}
+
+{% block content1 %}
+
+    <div class="col-md-4">
+        <div class="content-section1">
+         {%  if current_user.is_authenticated %}
+         <h3>{{ current_user.first_name }}'s Workouts.</h3>
+         <p class='text-muted'>Description.
+            <ul class="list-group">
+              <a href="{{ url_for('workouts') }}" class="button3"><span>Today's Workout</span></a>
+              <a href="{{ url_for('add_exercise1', today = today) }}" class="button3">
+                <span>Add an Exercise</span></a>
+              <a href="" class="button3">
+                <span>Resources</span></a>
+              <a href="{{ url_for('exercise_db') }}" class="button3">
+                <span>Exercise Database</span></a>
+         {% else %}
+          <h3>Your Nutrition, Simplified.</h3>
+          <p class='text-muted'>Easily log and track your nutritional data so you can maximize your workouts and ....
+            <ul class="list-group">
+              <a href="{{ url_for('set_macros') }}" class="button3">
+                <span>Set Macros</span></a>
+              <a href="{{ url_for('new_meal1') }}" class="button3">
+                <span>Add a Meal</span></a>
+              <a href="{{ url_for('meal_log') }}" class="button3">
+                <span>Meal Log</span></a>
+              <a href="{{ url_for('nutrition_resources') }}" class="button3">
+                <span>Resources</span></a>
+          {% endif %}
+            </ul>
+         </p>
+        </div>
+    </div>
+
+{% endblock content1 %}
