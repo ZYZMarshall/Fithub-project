@@ -12,11 +12,11 @@ from urllib.parse import urlparse
 from PIL import Image
 
 import flask
-from flask import render_template, url_for, flash, redirect, request
+from flask import render_template, url_for, flash, redirect, request, abort
 from main import app, db, bcrypt
-from main.forms import RegistrationForm, LoginForm, ProfileForm, ChangeProfilePicForm, ChangeUserForm, ChangePasswordForm, MacroForm, MealForm, AddExerciseForm, WorkoutForm
+from main.forms import RegistrationForm, LoginForm, ProfileForm, ChangeProfilePicForm, ChangeUserForm, ChangePasswordForm, MacroForm, MealForm, AddExerciseForm, WorkoutForm, PostForm
 
-from main.models import User, Profile, Schedule, Exercise, Macros, Meal
+from main.models import User, Profile, Schedule, Exercise, Macros, Meal, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -24,7 +24,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 @app.route("/")
 @app.route("/home")
 def home():
-    return render_template('home.html ')
+    page = request.args.get('page',1,type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(per_page=5)
+    return render_template('home.html', posts=posts)
 
 
 ### Routes and functions to do with the fitness page. ###
@@ -33,6 +35,10 @@ def home():
 @app.route("/my-fitness-page", methods = ['GET', 'POST'])
 def fitness_page():
     return render_template('fitness-page.html', title = 'My Fitness Page')
+
+@app.route("/course", methods=['GET','POST'])
+def course():
+    return render_template('course.html', title = 'Fitness Course')
 
 
 ### Routes and functions to do with the workouts page. ###
@@ -602,7 +608,9 @@ def nutr_res_macros():
 # Route to the user community page.
 @app.route("/community")
 def community():
-    return render_template('community.html', title = 'Community')
+    page = request.args.get('page',1,type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(per_page=5)
+    return render_template('community.html', title = 'Community',posts=posts)
 
 
 ### Routes and functions to do with user creation, login, and management. ###
@@ -709,7 +717,7 @@ def register():
         flask.session['password'] = hashed_password
 
         username = form.username.data
-
+        
         flash(f'Please set up your profile to create your account.', 'success')
 
         return redirect(url_for('profile_creation', username = username))
@@ -750,14 +758,13 @@ def logout():
 
     return redirect(url_for('home'))
 
-
 # Route for displaying the current user's account and profile.
 @app.route("/account")
 @login_required
 def account():
-    image_file = url_for('static', filename = 'images/' + current_user.profile_image)
+    profile_image = url_for('static', filename = 'images/' + current_user.profile_image)
 
-    return render_template('account.html', title = 'Your Account', image_file = image_file)
+    return render_template('account.html', title = 'Your Account', image_file = profile_image)
 
 
 """Save the PICTURE filename to the User model, and copy the selected PICTURE to static/images. The user's profile picture will
@@ -842,3 +849,64 @@ def change_password():
 
     return render_template('change-password.html', title = 'Change Password', form = form)
 
+@app.route('/course')
+def course_video():
+    return render_template('course.html')
+
+@app.route("/post/new", methods=['GET','POST'])
+@login_required
+def new_post():
+    form =PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)#create Post object
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post has been created!', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_post.html', title='New Post',
+                            form=form, legend='New Post')
+
+@app.route("/post/<int:post_id>") #flask let us put variable in the route using<>
+def post(post_id):
+    post = Post.query.get_or_404(post_id) #get the blog with this id or get 404 error
+    return render_template('post.html', title=post.title, post=post) #past variables to post.html
+
+
+@app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
+@login_required
+def update_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    form = PostForm()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content = form.content.data
+        db.session.commit()
+        flash('Your post has been updated!', 'success')
+        return redirect(url_for('post', post_id=post.id))
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.content.data = post.content
+    return render_template('create_post.html', title='Update Post',
+                           form=form, legend='Update Post',post=post)
+
+@app.route("/post/<int:post_id>/delete", methods=['POST'])
+@login_required
+def delete_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect(url_for('community'))
+
+@app.route("/user/<string:username>")
+def user_posts(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate(page=page, per_page=5)
+    return render_template('user_posts.html', posts=posts, user=user)

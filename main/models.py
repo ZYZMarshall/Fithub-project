@@ -36,6 +36,7 @@ class User(db.Model, UserMixin):
 
     meal = db.relationship('Meal', backref = 'user', lazy = True)
 
+    posts = db.relationship('Post', backref='author', lazy=True)#lazy=True means db will load the data as neccessary in one go. 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.profile_image}', '{self.date_joined}')"
 
@@ -134,3 +135,12 @@ class Meal(db.Model):
     def __repr__(self):
         return f"Meal('{self.user_id}', '{self.description}', '{self.time}', '{self.protein}', '{self.carbs}', '{self.fat}', '{self.calories}')"
 
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Post('{sef.title}, '{self.data_posted}')"

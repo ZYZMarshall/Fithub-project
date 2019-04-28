@@ -179,3 +179,8 @@ class ChangePasswordForm(FlaskForm):
 
     submit = SubmitField('Change Password')
 
+class PostForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    content = TextField('Content', validators=[DataRequired()])
+    submit = SubmitField('Post')
+
