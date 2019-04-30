@@ -6,9 +6,9 @@
 ######################################################################################################
 
 from datetime import datetime
-from main import db, login_manager
+from main import db, login_manager,app
 from flask_login import UserMixin
-
+from itsdangerous import JSONWebSignatureSerializer as Serializer
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -39,6 +39,20 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', backref='author', lazy=True)#lazy=True means db will load the data as neccessary in one go. 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.profile_image}', '{self.date_joined}')"
+
+    def get_reset_token(self, expires_sec=1800): #create a secret key when reset user info
+        s = Serializer(app.config['SECRET_KEY'])
+        return s.dumps({'user_id': self.id}).decode('utf-8')
+
+    @staticmethod  #no self parameter
+    def verify_reset_token(token):
+        s = Serializer(app.config['SECRET_KEY'])
+        try:
+            user_id = s.loads(token)['user_id']
+        except:
+            return None
+        return User.query.get(user_id)
+
 
 
 # A SQLAlchemy Model instance for user fitness profile data.
