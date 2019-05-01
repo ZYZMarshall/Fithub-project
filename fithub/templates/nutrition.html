@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+{% block content %}
+    {%  if current_user.is_authenticated %}
+
+    {% if macros.protein == -1 %}
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/macros.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Your Macros for {{ today.strftime('%B %d, %Y') }}</h4>
+          </div>
+          <ul>
+            <li>Please <a href="{{ url_for('main.set_macros') }}">set your macros</a> to view this feature.</li>
+            <li>Unsure about your macros? Please visit our <a href="{{ url_for('main.nutrition_resources') }}">Resources</a> page.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/remaining.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Your Remaining Macros for {{ today.strftime('%B %d, %Y') }}</h4>
+          </div>
+          <ul>
+            <li>Please <a href="{{ url_for('main.set_macros') }}">set your macros</a> to view this feature.</li>
+            <li>Unsure about your macros? Please visit our <a href="{{ url_for('main.nutrition_resources') }}">Resources</a> page.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/rec.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Recommendations</h4>
+          </div>
+          <ul>
+            <li>Please <a href="{{ url_for('main.set_macros') }}">set your macros</a> to view this feature.</li>
+            <li>Unsure about your macros? Please visit our <a href="{{ url_for('main.nutrition_resources') }}">Resources</a> page.</li>
+          </ul>
+        </div>
+      </article>
+
+    {% else %}
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/macros.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Your Macros for {{ today.strftime('%B %d, %Y') }}</h4>
+          </div>
+          <ul>
+            <li><p><strong>Protein:</strong> {{ macros.protein }}g</p></li>
+            <li><p><strong>Carbohydrates:</strong> {{ macros.carbs }}g</p></li>
+            <li><p><strong>Fat:</strong> {{ macros.fat }}g</p></li>
+            <li><p><strong>Approximate Calories:</strong> {{ macros.calories }} cal.</p></li>
+          </ul>
+          <small class="text-muted"><a href="{{ url_for('main.set_macros') }}">Edit My Macros</a></small>
+        </div>
+      </article>
+
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/remaining.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Your Remaining Macros for {{ today.strftime('%B %d, %Y') }}</h4>
+          </div>
+          <ul>
+            <li><p><strong>Protein:</strong> {{ remaining[0] }}g</p></li>
+            <li><p><strong>Carbohydrates:</strong> {{ remaining[1] }}g</p></li>
+            <li><p><strong>Fat:</strong> {{ remaining[2] }}g</p></li>
+            <li><p><strong>Approximate Calories:</strong> {{ remaining[3] }} cal.</p></li>
+            <li><p>Number of Meals: {{ meals|length }}</p></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/rec.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Recommendations</h4>
+          </div>
+          <ul>
+            <li><p>You have {{ remaining[0] }}g of protein, {{ remaining[1] }}g of carbs, and {{ remaining[2] }}g of fat left for today.</p></li>
+            <li><p>Try some of these <a href="#">dishes</a> to fill your macros.</p></li>
+            <li><p>Don't want to cook? Try these <a href="#">options</a> when eating out.</p></li>
+          </ul>
+        </div>
+      </article>
+
+    {% endif %}
+
+    {% else %}
+
+    <h2>Nutrition made simple.</h2>
+
+    <h5>As they say, "abs are made in the kitchen." No matter how hard and diligently work out, if your nutrition is not in place, you won't maximize your results.</h5>
+
+    <p>With Fithub, tracking and managing your daily nutritional intake is simple, intuitive, and ADJECTIVE.</p>
+
+{% endif %}
+
+{% endblock content %}
+
+{% block content1 %}
+
+    <div class="col-md-4">
+        <div class="content-section1">
+         {%  if current_user.is_authenticated %}
+         <h3>{{ current_user.first_name }}'s Nutrition.</h3>
+         <p class='text-muted'>Let's log and manage your nutrition so you can meet your fitness goals.
+            <ul class="list-group">
+              <a href="{{ url_for('main.set_macros') }}" class="button3">
+              	<span>Set Your Macros</span></a>
+              <a href="{{ url_for('main.view_macros') }}" class="button3">
+                <span>View Your Macros</span></a>
+              <a href="{{ url_for('main.new_meal1') }}" class="button3">
+                <span>Add a Meal</span></a>
+              <a href="{{ url_for('main.meal_log') }}" class="button3">
+                <span>View Your Meal Log</span></a>
+              <a href="{{ url_for('main.nutrition_resources') }}" class="button3">
+              	<span>Resources</span></a>
+         {% else %}
+          <h3>Your Nutrition, Simplified.</h3>
+          <p class='text-muted'>Easily log and track your nutritional data so you can maximize your workouts and ....
+            <ul class="list-group">
+              <a href="{{ url_for('main.set_macros') }}" class="button3">
+                <span>Set Macros</span></a>
+              <a href="{{ url_for('main.new_meal1') }}" class="button3">
+                <span>Add a Meal</span></a>
+              <a href="{{ url_for('main.meal_log') }}" class="button3">
+                <span>Meal Log</span></a>
+              <a href="{{ url_for('main.nutrition_resources') }}" class="button3">
+                <span>Resources</span></a>
+          {% endif %}
+            </ul>
+         </p>
+        </div>
+    </div>
+
+{% endblock content1 %}

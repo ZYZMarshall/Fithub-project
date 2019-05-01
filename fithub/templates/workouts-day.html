@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block content %}
+    {%  if current_user.is_authenticated %}
+
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/workout-' + day + '.jpg') }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>Your {{ day }} Workout.</h4>
+          </div>
+          <ul>
+            <li><p>Today's Workout: {{ workout }}</p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+            <li><p></p></li>
+          </ul>
+          <small class="text-muted"><a href="{{ url_for('users.update_workout2', day = day) }}">Change</a> today's workout.</small>
+        </div>
+      </article>
+
+    {% for exercise in exercises %}
+
+       <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <h4>{{ exercise.name }}</h4>
+          </div>
+          <ul>
+            <li><p><strong>Number of sets:</strong> {{ exercise.num_sets }}</p></li>
+            <li><p><strong>Number of reps:</strong> {{ exercise.num_reps }}</p></li>
+            <li><p><strong>Difficulty:</strong> {{ exercise.difficulty }}</p></li>
+            <li><p></p></li>
+          </ul>
+          <small class="text-muted"><a href="{{ url_for('users.edit_exercise2', day = day, exercise_id = exercise.id) }}">Edit</a> or 
+            <a href="">delete</a> this exercise from today's workout.</small>
+        </div>
+      </article>
+
+    {% endfor %}
+
+
+    {% else %}
+
+    <h2>Workout </h2>
+
+{% endif %}
+
+{% endblock content %}
+
+{% block content1 %}
+
+    <div class="col-md-4">
+        <div class="content-section1">
+         {%  if current_user.is_authenticated %}
+         <h3>{{ current_user.first_name }}'s Workouts.</h3>
+         <p class='text-muted'>Description.
+            <ul class="list-group">
+              <a href="{{ url_for('users.view_schedule') }}" class="button3">
+                <span>View Your Schedule</span></a>
+              <a href="{{ url_for('users.add_exercise2', day = day) }}" class="button3">
+              	<span>Add an Exercise</span></a>
+              <a href="" class="button3">
+                <span>Resources</span></a>
+              <a href="" class="button3">
+              	<span>Exercise Database</span></a>
+         {% else %}
+          <h3>Your Nutrition, Simplified.</h3>
+          <p class='text-muted'>Easily log and track your nutritional data so you can maximize your workouts and ....
+            <ul class="list-group">
+              <a href="{{ url_for('main.set_macros') }}" class="button3">
+                <span>Set Macros</span></a>
+              <a href="{{ url_for('main.new_meal1') }}" class="button3">
+                <span>Add a Meal</span></a>
+              <a href="{{ url_for('main.meal_log') }}" class="button3">
+                <span>Meal Log</span></a>
+              <a href="{{ url_for('main.nutrition_resources') }}" class="button3">
+                <span>Resources</span></a>
+          {% endif %}
+            </ul>
+         </p>
+        </div>
+    </div>
+
+{% endblock content1 %}

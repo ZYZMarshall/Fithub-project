@@ -2,7 +2,7 @@
 # Run the main Flask app. #
 ###########################
 
-from main import app
+from fithub import app
 
 # Run the Flask application.
 if __name__ == '__main__':
