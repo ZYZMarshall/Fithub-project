@@ -520,3 +520,8 @@ def change_password():
         return redirect(url_for('users.account'))
 
     return render_template('change-password.html', title = 'Change Password', form = form)
+  
+@login_required
+@app.route("/physicaltest")
+def physical_test():
+    return render_template('pysical-test.html')
