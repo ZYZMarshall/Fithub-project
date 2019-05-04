@@ -911,6 +911,7 @@ def user_posts(username):
         .paginate(page=page, per_page=5)
     return render_template('user_posts.html', posts=posts, user=user)
 
+@login_required
 @app.route("/physicaltest")
 def physical_test():
     return render_template('pysical-test.html')
