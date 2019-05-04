@@ -1,0 +1,343 @@
+{% extends 'layout.html' %}
+
+
+
+    {% block content1 %}
+  <link href="{{ url_for('static', filename='gwdpage_style.css') }}" rel="stylesheet" data-version="12" data-exports-type="gwd-page">
+  <link href="{{ url_for('static', filename='gwdimage_style.css') }}" rel="stylesheet" data-version="12" data-exports-type="gwd-image">
+  <link href="{{ url_for('static', filename='gwdvideo_style.css') }}" rel="stylesheet" data-version="16" data-exports-type="gwd-video">
+  <link href="{{ url_for('static', filename='gwdgesture_style.css') }}" rel="stylesheet" data-version="6" data-exports-type="gwd-gesture">
+  <link href="{{ url_for('static', filename='gwdgallerynavigation_style.css') }}" rel="stylesheet" data-version="5" data-exports-type="gwd-gallerynavigation">
+  <link href="{{ url_for('static', filename='gwdcarouselgallery_style.css') }}" rel="stylesheet" data-version="22" data-exports-type="gwd-carouselgallery">
+  <style type="text/css" id="gwd-text-style">p {
+    margin: 0px;
+}
+h1 {
+    margin: 0px;
+}
+h2 {
+    margin: 0px;
+}
+h3 {
+    margin: 0px;
+}</style>
+  <style type="text/css">html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+body {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    perspective: 1400px;
+    -webkit-perspective: 1400px;
+    -moz-perspective: 1400px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    background-image: none;
+    background-color: transparent;
+}
+.gwd-div-1o8e {
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    left: 0%;
+    top: 3%;
+}
+.gwd-video-1gno {
+    position: absolute;
+    height: 70%;
+    width: 70%;
+    left: 15%;
+    top: 8%;
+}
+.gwd-imagebutton-10ah {
+    position: absolute;
+    width: 20%;
+    height: 15%;
+    left: 15%;
+    top: 83%;
+    border-radius: 250px;
+}
+.gwd-imagebutton-1k3l {
+    position: absolute;
+    border-radius: 250px;
+    padding: 0px;
+    width: 20%;
+    height: 15%;
+    left: 65%;
+    top: 83%;
+}
+.gwd-div-226p {
+    position: absolute;
+    left: 0%;
+    width: 99.87%;
+    height: 45%;
+    top: 124%;
+}
+.gwd-carouselgallery-wea5 {
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+}
+.gwd-div-1or6 {
+    position: absolute;
+    left: 0%;
+    background-image: none;
+    background-color: rgb(44, 43, 43);
+    opacity: 0.7;
+    visibility: hidden;
+    width: 100%;
+    height: 150%;
+    top: 9%;
+}
+.gwd-div-1xap {
+    position: absolute;
+    width: 60%;
+    background-image: none;
+    background-color: rgb(255, 252, 252);
+    left: 21%;
+    top: 15%;
+    visibility: hidden;
+    height: 75%;
+}
+.gwd-img-9wyc {
+    position: absolute;
+    left: 29.54%;
+    width: 40%;
+    height: 40%;
+    top: 5%;
+}
+.gwd-p-1c5d {
+    position: absolute;
+    top: 46.76%;
+    height: 15%;
+    font-family: "Arial Black";
+    font-size: 20px;
+    left: 5%;
+    width: 95%;
+}
+.gwd-button-1wz8 {
+    position: absolute;
+    height: 15%;
+    left: 18%;
+    top: 71%;
+    width: 25%;
+    font-family: "Arial Black";
+    font-size: 20px;
+    border-style: none;
+    border-radius: 30px;
+    background-color: transparent;
+    background: -webkit-linear-gradient(left, rgb(232, 222, 223) 0%, rgb(213, 62, 69) 77%);
+    background: -moz-linear-gradient(left, rgb(232, 222, 223) 0%, rgb(213, 62, 69) 77%);
+    background: linear-gradient(to right, rgb(232, 222, 223) 0%, rgb(213, 62, 69) 77%);
+}
+.gwd-button-1nc4 {
+    position: absolute;
+    width: 25%;
+    height: 15%;
+    top: 71%;
+    left: 60%;
+    font-family: "Arial Black";
+    font-size: 20px;
+    border-style: none;
+    border-radius: 30px;
+    background-color: transparent;
+    background: -webkit-linear-gradient(left, rgb(18, 151, 68) 0%, rgb(248, 248, 248) 77%);
+    background: -moz-linear-gradient(left, rgb(18, 151, 68) 0%, rgb(248, 248, 248) 77%);
+    background: linear-gradient(to right, rgb(18, 151, 68) 0%, rgb(248, 248, 248) 77%);
+}
+.gwd-div-sse3 {
+    position: absolute;
+    width: 73%;
+    background-image: none;
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255);
+    left: 14%;
+    top: 12%;
+    visibility: hidden;
+    height: 85%;
+}
+.gwd-form-lazr {
+    position: absolute;
+    left: -0.39%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    background-image: none;
+    background-color: rgb(243, 239, 239);
+    visibility: hidden;
+}
+.gwd-img-12ve {
+    position: absolute;
+    top: 1.89%;
+    width: 35.49%;
+    height: 30.24%;
+    left: 30%;
+}
+.gwd-p-g0id {
+    position: absolute;
+    left: -0.01%;
+    top: 33.08%;
+    width: 100.04%;
+    height: 10%;
+    text-align: center;
+    font-size: 25px;
+    font-family: "Arial Black";
+}
+.gwd-input-rm5p {
+    position: absolute;
+    left: 59%;
+    top: 50%;
+    height: 8%;
+    border-style: none;
+    border-radius: 25px;
+    background-image: none;
+    background-color: rgb(3, 242, 242);
+    width: 15%;
+}
+.gwd-input-1q6k {
+    position: absolute;
+    left: 59%;
+    top: 62%;
+    border-style: none;
+    border-radius: 25px;
+    background-image: none;
+    background-color: rgb(3, 242, 242);
+    height: 8%;
+    width: 15%;
+}
+.gwd-p-1a6a {
+    position: absolute;
+    left: 6.04%;
+    height: 8%;
+    top: 50%;
+    border-radius: 25px;
+    background-image: none;
+    background-color: transparent;
+    font-family: "Arial Black";
+    width: 35%;
+    font-size: 25px;
+    color: rgb(107, 165, 53);
+    text-align: left;
+}
+.gwd-p-eq7g {
+    position: absolute;
+    left: 6.24%;
+    top: 62.38%;
+    height: 8%;
+    border-radius: 25px;
+    background-image: none;
+    background-color: rgb(248, 247, 247);
+    width: 35%;
+    font-family: "Arial Black";
+    font-size: 25px;
+    color: rgb(107, 165, 53);
+    text-align: left;
+}
+.gwd-button-1u41 {
+    position: absolute;
+    height: 15%;
+    width: 40%;
+    left: 29%;
+    top: 78%;
+    border-style: none;
+    border-radius: 50px;
+    background-color: transparent;
+    background-image: -webkit-radial-gradient(circle farthest-corner, rgb(5, 246, 96) 0%, rgb(25, 153, 73) 77%);
+    background-image: -moz-radial-gradient(circle farthest-corner, rgb(5, 246, 96) 0%, rgb(25, 153, 73) 77%);
+    background-image: radial-gradient(circle farthest-corner, rgb(5, 246, 96) 0%, rgb(25, 153, 73) 77%);
+    color: rgb(244, 248, 244);
+    font-size: 50px;
+}</style>
+  <script data-source="googbase_min.js" data-version="4" data-exports-type="googbase" src="{{ url_for('static', filename='googbase_min.js') }}"></script>
+  <script data-source="gwd_webcomponents_min.js" data-version="6" data-exports-type="gwd_webcomponents" src="{{ url_for('static', filename='gwd_webcomponents_min.js') }}"></script>
+  <script data-source="gwdpage_min.js" data-version="12" data-exports-type="gwd-page" src="{{ url_for('static', filename='gwdpage_min.js') }}"></script>
+  <script data-source="gwdimage_min.js" data-version="12" data-exports-type="gwd-image" src="{{ url_for('static', filename='gwdimage_min.js') }}"></script>
+  <script data-source="gwdimagebutton_min.js" data-version="10" data-exports-type="gwd-imagebutton" src="{{ url_for('static', filename='gwdimagebutton_min.js') }}"></script>
+  <script data-source="gwdvideo_min.js" data-version="16" data-exports-type="gwd-video" src="{{ url_for('static', filename='gwdvideo_min.js') }}"></script>
+  <script data-source="gwdgesture_min.js" data-version="6" data-exports-type="gwd-gesture" src="{{ url_for('static', filename='gwdgesture_min.js') }}"></script>
+  <script data-source="gwdgallerynavigation_min.js" data-version="5" data-exports-type="gwd-gallerynavigation" src="{{ url_for('static', filename='gwdgallerynavigation_min.js') }}"></script>
+  <script data-source="gwdcarouselgallery_min.js" data-version="22" data-exports-type="gwd-carouselgallery" src="{{ url_for('static', filename='gwdcarouselgallery_min.js') }}"></script>
+  <script type="text/javascript" gwd-events="support" src="{{ url_for('static', filename='gwd-events-support.1.0.js') }}"></script>
+  <script type="text/javascript" gwd-events="handlers">
+    window.gwd = window.gwd || {};
+    gwd.yes_button_click = function(event) {
+      window.location.href = "..//main-page//index.html"
+    };
+    gwd.no_button_click = function(event) {
+      var poplayer = document.getElementById("whole-page");
+      var popwindow = document.getElementById("pop-up-window");
+      poplayer.style.visibility = "hidden";
+      popwindow.style.visibility = "hidden";
+    };
+    gwd.give_up_button_click = function(event) {
+      var poplayer = document.getElementById("whole-page");
+      var popwindow = document.getElementById("pop-up-window");
+      poplayer.style.visibility = "visible";
+      popwindow.style.visibility = "visible";
+    };
+    gwd.finish_button_click = function(event) {
+      var poplayer = document.getElementById("whole-page");
+      var popwindow = document.getElementById("pop-up-window-form");
+      var popform = document.getElementById("test-form");
+      poplayer.style.visibility = "visible";
+      popwindow.style.visibility = "visible";
+      popform.style.visibility = "visible";
+    };
+  </script>
+  <script type="text/javascript" gwd-events="registration">
+    // Google Web Designer中的事件处理支持代码
+     // 此脚本块是自动生成的。请勿修改！
+    gwd.actions.events.registerEventHandlers = function(event) {
+      gwd.actions.events.addHandler('yes-button', 'click', gwd.yes_button_click, false);
+      gwd.actions.events.addHandler('no-button', 'click', gwd.no_button_click, false);
+      gwd.actions.events.addHandler('gwd-imagebutton_2', 'click', gwd.give_up_button_click, false);
+      gwd.actions.events.addHandler('gwd-imagebutton_3', 'click', gwd.finish_button_click, false);
+    };
+    gwd.actions.events.deregisterEventHandlers = function(event) {
+      gwd.actions.events.removeHandler('yes-button', 'click', gwd.yes_button_click, false);
+      gwd.actions.events.removeHandler('no-button', 'click', gwd.no_button_click, false);
+      gwd.actions.events.removeHandler('gwd-imagebutton_2', 'click', gwd.give_up_button_click, false);
+      gwd.actions.events.removeHandler('gwd-imagebutton_3', 'click', gwd.finish_button_click, false);
+    };
+    document.addEventListener("DOMContentLoaded", gwd.actions.events.registerEventHandlers);
+    document.addEventListener("unload", gwd.actions.events.deregisterEventHandlers);
+  </script>
+
+
+
+  <div class="gwd-div-1o8e" id="video-play">
+    <gwd-video id="gwd-video_1" muted="" controls="" sources="" class="gwd-video-1gno"></gwd-video>
+    <gwd-imagebutton id="gwd-imagebutton_2" up-image="{{  url_for('static', filename='images/give-up_2.jpg') }}" over-image="" down-image="" scaling="cover" class="gwd-imagebutton-10ah"></gwd-imagebutton>
+    <gwd-imagebutton id="gwd-imagebutton_3" up-image="{{  url_for('static', filename='images/Finish_1.jpg') }}" over-image="" down-image="" scaling="cover" class="gwd-imagebutton-1k3l" data-gwd-name="finish-button"></gwd-imagebutton>
+  </div>
+  <div class="gwd-div-226p" id="teaching-picture">
+    <gwd-carouselgallery id="gwd-carouselgallery_1" scaling="contain" pause-front-media="" resume-next-media="" class="gwd-carouselgallery-wea5" autoplay="" images="{{  url_for('static', filename='images/push-up1.jpg') }},{{  url_for('static', filename='images/push-up2.jpg') }},{{  url_for('static', filename='images/push-up3.jpg') }},{{  url_for('static', filename='images/push-up4.jpg') }},{{  url_for('static', filename='images/push-up5.jpg') }}" start-frame="1" transition-duration="4000"></gwd-carouselgallery>
+  </div>
+  <div class="gwd-div-1or6" id="whole-page"></div>
+  <div class="gwd-div-1xap" id="pop-up-window">
+    <img class="gwd-img-9wyc" id="give-up-img" src="{{  url_for('static', filename='images/give-up-img.png') }}" alt="give-up-img">
+    <p class="gwd-p-1c5d">Physical test is easy, are you sure you want to give up?</p>
+    <button id="yes-button" class="gwd-button-1wz8">Yes</button>
+    <button id="no-button" class="gwd-button-1nc4">I can do this !</button>
+  </div>
+  <div class="gwd-div-sse3" id="pop-up-window-form">
+    <form class="gwd-form-lazr" id="test-form">
+      <img class="gwd-img-12ve" id="finish-img" src="{{  url_for('static', filename='images/finish-img.png') }}" alt="finish-img">
+      <p class="gwd-p-g0id" id="congratulation">Congratulations! You finished the physical-test, now let us know how many actions you do during the vedio!</p>
+      <input type="number" id="push-up-number" value="0" min="0" max="999" step="1" class="gwd-input-rm5p">
+      <input type="number" id="squat-number" value="0" min="0" max="999" step="1" class="gwd-input-1q6k">
+      <p class="gwd-p-1a6a" id="push-up">Number of push-up</p>
+      <p class="gwd-p-eq7g" id="squat">Number of squat</p>
+      <button id="submit-button" class="gwd-button-1u41">submit</button>
+    </form>
+  </div>
+
+
+{% endblock %}
