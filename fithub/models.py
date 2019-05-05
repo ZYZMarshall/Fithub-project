@@ -6,7 +6,8 @@
 ######################################################################################################
 
 from datetime import datetime
-from fithub import db, login_manager,app
+from fithub import db, login_manager
+from flask import current_app
 from flask_login import UserMixin
 from itsdangerous import JSONWebSignatureSerializer as Serializer
 
@@ -41,12 +42,12 @@ class User(db.Model, UserMixin):
         return f"User('{self.username}', '{self.email}', '{self.profile_image}', '{self.date_joined}')"
 
     def get_reset_token(self, expires_sec=1800): #create a secret key when reset user info
-        s = Serializer(app.config['SECRET_KEY'])
+        s = Serializer(current_app.config['SECRET_KEY'])
         return s.dumps({'user_id': self.id}).decode('utf-8')
 
     @staticmethod  #no self parameter
     def verify_reset_token(token):
-        s = Serializer(app.config['SECRET_KEY'])
+        s = Serializer(current_app.config['SECRET_KEY'])
         try:
             user_id = s.loads(token)['user_id']
         except:

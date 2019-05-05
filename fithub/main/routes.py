@@ -12,8 +12,9 @@ from urllib.parse import urlparse
 from PIL import Image
 
 import flask
-from flask import render_template, url_for, flash, redirect, request, abort,Blueprint
-from fithub import app, db, bcrypt, mail
+
+from flask import render_template, url_for, flash, redirect, request, abort,Blueprint, current_app
+from fithub import db, bcrypt, mail
 from fithub.main.forms import MacroForm, MealForm
 from fithub.models import User, Profile, Schedule, Exercise, Macros, Meal, Post
 from flask_login import login_user, current_user, logout_user, login_required
@@ -316,7 +317,7 @@ def nutr_res_macros():
 @main.route("/community")
 def community():
     page = request.args.get('page',1,type=int)
-    posts = Post.query.order_by(Post.date_posted.desc()).paginate(per_page=5)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page,per_page=5)
     return render_template('community.html', title = 'Community',posts=posts)
 
 

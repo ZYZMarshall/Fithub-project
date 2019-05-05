@@ -522,6 +522,6 @@ def change_password():
     return render_template('change-password.html', title = 'Change Password', form = form)
   
 @login_required
-@app.route("/physicaltest")
+@users.route("/physicaltest")
 def physical_test():
     return render_template('physical-test.html')

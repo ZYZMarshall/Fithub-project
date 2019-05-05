@@ -14,7 +14,7 @@ def save_picture(picture):
 
     picture_filename = random_hex + file_ext
 
-    picture_path = os.path.join(app.root_path, 'static/images', picture_filename)
+    picture_path = os.path.join(current_app.root_path, 'static/images', picture_filename)
 
     output_size = (500, 500)
     i = Image.open(picture)
