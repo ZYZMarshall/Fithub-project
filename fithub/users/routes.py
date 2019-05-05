@@ -524,4 +524,4 @@ def change_password():
 @login_required
 @app.route("/physicaltest")
 def physical_test():
-    return render_template('pysical-test.html')
+    return render_template('physical-test.html')
