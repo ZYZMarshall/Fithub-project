@@ -13,4 +13,4 @@ WTForms;
 
 Boostrap;
 
-URL:fithubforeveryone.com/bg_fithubforeveryone.com/
+URL:http://www.fithub-fit.com/
