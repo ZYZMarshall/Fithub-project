@@ -5,7 +5,7 @@ Dependencies:
 
 Flask;
 
-Database:SQLAlchemy;
+Database:SQLAlchemy, Sqlite;
 
 Pillow;
 
